@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="dashboard.html" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br><br>
+      <input type="submit" value="Login">
+    </form>
+    <script>
+        // Define the correct username and password
+const correctUsername = "admin";
+const correctPassword = "password123";
+
+// Get the login form and add an event listener for form submission
+const dashboard = document.querySelector("form");
+loginForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  // Get the username and password input values
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  // Check if the username and password are correct
+  if (username === correctUsername && password === correctPassword) {
+    // If correct, redirect to the dashboard page
+    window.location.href = "dashboard.html";
+  } else {
+    // If incorrect, display an error message
+    alert("Incorrect username or password");
+  }
+});
+// Get the user info paragraph and the logout button
+const userInfo = document.getElementById
+const users = {
+  alice: {
+    password: 'password123',
+    page: 'alice.html',
+    carInfo: 'Alice\'s smart car info goes here'
+  },
+  bob: {
+    password: 'qwerty',
+    page: 'bob.html',
+    carInfo: 'Bob\'s smart car info goes here'
+  }
+};
+
+const loginForm = document.querySelector('form');
+loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  if (users[username] && users[username].password === password) {
+    localStorage.setItem('currentUser', username);
+    window.location.href = users[username].page;
+  } else {
+    alert('Invalid username or password');
+  }
+});
+const currentUser = localStorage.getItem('currentUser');
+const carInfoDiv = document.getElementById('car-info');
+if (currentUser) {
+  const carInfo = users[currentUser].carInfo;
+  carInfoDiv.textContent = carInfo;
+} else {
+  carInfoDiv.textContent = 'You must be logged in to view this information';
+}
+
+
+</script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard Page</title>
+  </head>
+  <body>
+    <h1>Welcome to the Smart Car Control Panel</h1>
+    <p id="user-info"></p>
+    <button id="logout-btn">Logout</button>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
